@@ -14,7 +14,7 @@ fn handle_connection(mut stream: TcpStream) {
 
     let (status, filename) = if buffer.starts_with(get) {
         ("HTTP/1.1 200 OK", "index.html")
-    } else if buffer.strats_with(sleep) {
+    } else if buffer.starts_with(sleep) {
         thread::sleep(Duration::from_secs(5));
         ("HTTP/1.1 200 OK", "index.html")
     } else {
